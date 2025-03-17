@@ -1,50 +1,107 @@
-# Welcome to your Expo app 👋
+# Movie App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native movie search and trending tracker app built with Expo and Appwrite.
 
-## Get started
+## Features
+- Search for movies using an API
+- Store search terms and track their count using Appwrite
+- Display trending movies based on search frequency
+- Optimized with React Native and Tailwind CSS
 
-1. Install dependencies
+## Tech Stack
+- **React Native** (Expo)
+- **Appwrite** (Database & Authentication)
+- **Tailwind CSS** (UI Styling)
+- **TypeScript**
 
-   ```bash
-   npm install
-   ```
+## Setup & Installation
+### Prerequisites
+- Install [Node.js](https://nodejs.org/)
+- Install [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- Sign up for [Appwrite](https://appwrite.io/)
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+### Clone the Repository
+```sh
+git clone https://github.com/your-username/movie-app.git
+cd movie-app
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Install Dependencies
+```sh
+npm install
+```
 
-## Learn more
+### Setup Environment Variables
+Create a `.env` file in the root directory and add:
+```sh
+EXPO_PUBLIC_APPWRITE_PROJECT_ID=your_project_id
+EXPO_PUBLIC_APPWRITE_DATABASE_ID=your_database_id
+EXPO_PUBLIC_APPWRITE_COLLECTION_ID=your_collection_id
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### Run the Project
+```sh
+npx expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Building an APK
+1. Install EAS CLI:
+   ```sh
+   npm install -g eas-cli
+   ```
+2. Authenticate with Expo:
+   ```sh
+   eas login
+   ```
+3. Create an `eas.json` file with the following configuration:
+   ```json
+   {
+     "cli": {
+       "version": ">= 15.0.15",
+       "appVersionSource": "remote"
+     },
+     "build": {
+       "preview": {
+         "distribution": "internal",
+         "android": {
+           "buildType": "apk"
+         }
+       },
+       "production": {
+         "autoIncrement": true,
+         "distribution": "store",
+         "android": {
+           "buildType": "apk"
+         }
+       }
+     }
+   }
+   ```
+4. Run the build command:
+   ```sh
+   eas build --platform android --profile preview
+   ```
 
-## Join the community
+## Folder Structure
+```
+movie-app/
+│── src/
+│   ├── components/        # UI components
+│   ├── screens/           # App screens
+│   ├── services/          # API & database logic
+│   ├── hooks/             # Custom hooks
+│   ├── navigation/        # Navigation setup
+│── assets/                # Images and icons
+│── app.json               # Expo configuration
+│── eas.json               # EAS build configuration
+│── .env                   # Environment variables
+│── package.json           # Dependencies
+│── README.md              # Project documentation
+```
 
-Join our community of developers creating universal apps.
+## Contributing
+Feel free to fork the repo and submit a pull request!
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## License
+This project is open-source and available under the MIT License.
+
